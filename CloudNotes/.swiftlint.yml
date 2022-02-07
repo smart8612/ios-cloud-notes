@@ -1,0 +1,7 @@
+included:
+    - CloudNotes
+excluded:
+    - CloudNotes/AppDelegate.swift
+    - CloudNotes/SceneDelegate.swift
+    - Pods
+disabled_rules:

@@ -10,22 +10,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
+
         let splitViewController = UISplitViewController(style: .doubleColumn)
-        let menuTableViewController = MemoMenuTableViewController()
-        let contentViewController = ViewController()
-        contentViewController.view.backgroundColor = .green
-        
+        let masterViewController = MemoMenuTableViewController()
+        let detailViewController = ViewController()
+
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = splitViewController
-        splitViewController.setViewController(menuTableViewController, for: .primary)
-        splitViewController.setViewController(contentViewController, for: .secondary)
+        
+        splitViewController.setViewController(masterViewController, for: .primary)
+        splitViewController.setViewController(detailViewController, for: .secondary)
+        
         window?.makeKeyAndVisible()
     }
 
@@ -60,6 +60,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
-
 }
-
