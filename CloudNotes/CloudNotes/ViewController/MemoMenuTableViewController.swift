@@ -9,7 +9,8 @@ import UIKit
 
 class MemoMenuTableViewController: UITableViewController {
     
-    var memo: [Memo] = []
+    var memos: [Memo] = []
+    var delegate: MemoSelectedDelegate?
     
     let addBarButton: UIBarButtonItem = {
         let barButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
@@ -27,7 +28,7 @@ class MemoMenuTableViewController: UITableViewController {
         let sampleAsset = NSDataAsset(name: "sample")
         guard let jsonData = sampleAsset?.data else { return }
         guard let decodedJSON = try? JSONDecoder().decode([Memo].self, from: jsonData) else { return }
-        memo = decodedJSON
+        memos = decodedJSON
     }
 
     // MARK: - Table view data source
@@ -37,15 +38,20 @@ class MemoMenuTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memo.count
+        return memos.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.text = "\(memo[indexPath.row].title)"
+        content.text = "\(memos[indexPath.row].title)"
         cell.contentConfiguration = content
         return cell
     }
-
+    
+    // MARK: Tablew view delegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentMemo = self.memos[indexPath.row]
+        delegate?.memoSelected(currentMemo)
+    }
 }

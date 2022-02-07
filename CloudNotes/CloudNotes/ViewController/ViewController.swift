@@ -7,20 +7,31 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let contentLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Hello World"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    var memo: Memo?
+    
+    let contentTextView: UITextView = {
+        let textView = UITextView()
+        textView.text = "Hello World"
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.view.addSubview(contentLabel)
+        self.view.addSubview(contentTextView)
         NSLayoutConstraint.activate([
-            contentLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
-            contentLabel.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor)
+            contentTextView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            contentTextView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            contentTextView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            contentTextView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
+    }
+}
+
+extension ViewController: MemoSelectedDelegate {
+    func memoSelected(_ newMemo: Memo) {
+        self.memo = newMemo
+        contentTextView.text = memo?.body
     }
 }
