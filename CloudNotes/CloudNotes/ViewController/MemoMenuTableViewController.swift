@@ -9,7 +9,7 @@ import UIKit
 
 class MemoMenuTableViewController: UITableViewController {
     
-    let viewModel = MemoMenuViewModel()
+    private(set) lazy var viewModel = MemoMenuViewModel(handler: self.updateUI)
     
     var delegate: MemoSelectedDelegate?
     
@@ -26,6 +26,10 @@ class MemoMenuTableViewController: UITableViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+    
+    func updateUI() {
+        tableView.reloadData()
+    }
 
 }
 
@@ -33,7 +37,7 @@ class MemoMenuTableViewController: UITableViewController {
 extension MemoMenuTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return viewModel.sectionCount
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,7 +47,7 @@ extension MemoMenuTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.text = "\(viewModel.memos[indexPath.row].title)"
+        content.text = viewModel.cellTitle(at: indexPath.row)
         cell.contentConfiguration = content
         return cell
     }
