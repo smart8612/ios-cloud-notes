@@ -7,14 +7,11 @@
 
 import Foundation
 
-struct Memo: Codable {
-    let title: String
-    let body: String
-    let lastModified: Date
+struct Memo: Codable, Hashable {
     
-    enum CodingKeys: String, CodingKey {
-        case title = "title"
-        case body = "body"
-        case lastModified = "last_modified"
-    }
+    var id: UUID?
+    var title: String
+    var body: String
+    var lastModified: Date
+    
 }

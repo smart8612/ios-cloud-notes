@@ -15,6 +15,8 @@
 		C110BDAF27B182A5002C2F26 /* MemoMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C110BDAE27B182A5002C2F26 /* MemoMenuTableViewController.swift */; };
 		C17291B427B40ACC0092D8E7 /* MemoMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17291B327B40ACC0092D8E7 /* MemoMenuViewModel.swift */; };
 		C17291B627B40B250092D8E7 /* MemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17291B527B40B250092D8E7 /* MemoModel.swift */; };
+		C17291BA27B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17291B927B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift */; };
+		C17291BC27B42F0A0092D8E7 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17291BB27B42F0A0092D8E7 /* Section.swift */; };
 		C7481C6E25BBCF3900B9CA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7481C6D25BBCF3900B9CA55 /* AppDelegate.swift */; };
 		C7481C7025BBCF3900B9CA55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7481C6F25BBCF3900B9CA55 /* SceneDelegate.swift */; };
 		C7481C7225BBCF3900B9CA55 /* MemoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7481C7125BBCF3900B9CA55 /* MemoDetailViewController.swift */; };
@@ -55,6 +57,8 @@
 		C110BDAE27B182A5002C2F26 /* MemoMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoMenuTableViewController.swift; sourceTree = "<group>"; };
 		C17291B327B40ACC0092D8E7 /* MemoMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoMenuViewModel.swift; sourceTree = "<group>"; };
 		C17291B527B40B250092D8E7 /* MemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoModel.swift; sourceTree = "<group>"; };
+		C17291B927B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoMenuTableViewDiffableDataSource.swift; sourceTree = "<group>"; };
+		C17291BB27B42F0A0092D8E7 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		C185A38BC6C0D925316CFCF9 /* Pods_CloudNotes_CloudNotesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloudNotes_CloudNotesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7481C6A25BBCF3900B9CA55 /* CloudNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7481C6D25BBCF3900B9CA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 				C110BDAE27B182A5002C2F26 /* MemoMenuTableViewController.swift */,
 				C7481C7125BBCF3900B9CA55 /* MemoDetailViewController.swift */,
 				C10A9AA427B1A36500339A93 /* MemoSelectedDelegate.swift */,
+				C17291B927B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 			children = (
 				C17291B527B40B250092D8E7 /* MemoModel.swift */,
 				C10A9A9F27B19C4C00339A93 /* Memo.swift */,
+				C17291BB27B42F0A0092D8E7 /* Section.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -442,8 +448,10 @@
 				C17291B427B40ACC0092D8E7 /* MemoMenuViewModel.swift in Sources */,
 				C7481C7225BBCF3900B9CA55 /* MemoDetailViewController.swift in Sources */,
 				C7481C6E25BBCF3900B9CA55 /* AppDelegate.swift in Sources */,
+				C17291BC27B42F0A0092D8E7 /* Section.swift in Sources */,
 				C10A9AA027B19C4C00339A93 /* Memo.swift in Sources */,
 				C7481C7025BBCF3900B9CA55 /* SceneDelegate.swift in Sources */,
+				C17291BA27B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift in Sources */,
 				C7481C7825BBCF3900B9CA55 /* CloudNotes.xcdatamodeld in Sources */,
 				C10A9AA527B1A36500339A93 /* MemoSelectedDelegate.swift in Sources */,
 				C17291B627B40B250092D8E7 /* MemoModel.swift in Sources */,

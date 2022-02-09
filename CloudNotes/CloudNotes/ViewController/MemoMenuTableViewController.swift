@@ -7,13 +7,23 @@
 
 import UIKit
 
-class MemoMenuTableViewController: UITableViewController {
+final class MemoMenuTableViewController: UITableViewController {
     
     private(set) lazy var viewModel = MemoMenuViewModel(handler: self.updateUI)
     
     var delegate: MemoSelectedDelegate?
     
-    let addBarButton: UIBarButtonItem = {
+    private lazy var dataSource = {
+        return MemoMenuTableViewDiffableDataSource(tableView: self.tableView, viewModel: self.viewModel) { (view, indexPath, item) in
+            let cell = view.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            var content = cell.defaultContentConfiguration()
+            content.text = item.title
+            cell.contentConfiguration = content
+            return cell
+        }
+    }()
+    
+    private let addBarButton: UIBarButtonItem = {
         let barButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
         return barButton
     }()
@@ -25,33 +35,17 @@ class MemoMenuTableViewController: UITableViewController {
         self.navigationController?.navigationBar.topItem?.rightBarButtonItem = addBarButton
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        updateUI()
     }
     
-    func updateUI() {
-        tableView.reloadData()
+    private func updateUI() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Memo>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(viewModel.memos, toSection: .main)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 
-}
-
-// MARK: - Table view data source
-extension MemoMenuTableViewController {
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.sectionCount
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.memos.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        content.text = viewModel.cellTitle(at: indexPath.row)
-        cell.contentConfiguration = content
-        return cell
-    }
-    
 }
 
 // MARK: - Tablew view delegate
@@ -62,20 +56,9 @@ extension MemoMenuTableViewController {
         delegate?.memoSelected(currentMemo)
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
     override func tableView(_ tableView: UITableView,
                             editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
-    }
-    
-    override func tableView(_ tableView: UITableView,
-                            commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            viewModel.removeMemo(at: indexPath.row)
-        }
     }
     
 }
