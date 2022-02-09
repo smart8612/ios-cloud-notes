@@ -15,4 +15,8 @@ struct MemoModel {
         self.memos = memo
     }
     
+    mutating func deleteMemo(at index: Int) {
+        memos.remove(at: index)
+    }
+    
 }

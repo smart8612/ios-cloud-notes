@@ -37,4 +37,8 @@ final class MemoMenuViewModel {
         return memos[index].title
     }
     
+    func removeMemo(at index: Int) {
+        model.deleteMemo(at: index)
+    }
+    
 }
