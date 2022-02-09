@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let splitViewController = UISplitViewController(style: .doubleColumn)
         let masterViewController = MemoMenuTableViewController()
-        let detailViewController = ViewController()
+        let detailViewController = MemoDetailViewController()
         
         masterViewController.delegate = detailViewController
 

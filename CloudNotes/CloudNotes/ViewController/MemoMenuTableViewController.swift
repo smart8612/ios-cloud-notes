@@ -10,6 +10,7 @@ import UIKit
 class MemoMenuTableViewController: UITableViewController {
     
     var memos: [Memo] = []
+    
     var delegate: MemoSelectedDelegate?
     
     let addBarButton: UIBarButtonItem = {
@@ -31,8 +32,11 @@ class MemoMenuTableViewController: UITableViewController {
         memos = decodedJSON
     }
 
-    // MARK: - Table view data source
+}
 
+// MARK: - Table view data source
+extension MemoMenuTableViewController {
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -49,9 +53,14 @@ class MemoMenuTableViewController: UITableViewController {
         return cell
     }
     
-    // MARK: Tablew view delegate
+}
+
+// MARK: - Tablew view delegate
+extension MemoMenuTableViewController {
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentMemo = self.memos[indexPath.row]
         delegate?.memoSelected(currentMemo)
     }
+    
 }

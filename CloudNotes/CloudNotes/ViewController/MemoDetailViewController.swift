@@ -1,12 +1,12 @@
 //
-//  CloudNotes - ViewController.swift
+//  CloudNotes - MemoDetailViewController.swift
 //  Created by yagom. 
 //  Copyright © yagom. All rights reserved.
 // 
 
 import UIKit
 
-class ViewController: UIViewController {
+class MemoDetailViewController: UIViewController {
     var memo: Memo?
     
     let contentTextView: UITextView = {
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: MemoSelectedDelegate {
+extension MemoDetailViewController: MemoSelectedDelegate {
     func memoSelected(_ newMemo: Memo) {
         self.memo = newMemo
         contentTextView.text = memo?.body
