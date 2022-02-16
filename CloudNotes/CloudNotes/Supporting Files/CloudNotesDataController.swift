@@ -65,6 +65,17 @@ class CloudNotesDataController {
         try? context.save()
     }
     
+    func delete(object: NSManagedObject) {
+        context.delete(object)
+        try? context.save()
+    }
+    
+    func update<T: NSManagedObject>(request: NSFetchRequest<T>, objectHandler: (NSManagedObject) -> Void) {
+        guard let managedObject = try? context.fetch(request).first else { return }
+        objectHandler(managedObject)
+        try? context.save()
+    }
+    
     // MARK: - Core Data Saving support
     func saveContext () {
         if context.hasChanges {

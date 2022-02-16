@@ -37,8 +37,24 @@ struct MemoModel {
         }
     }
     
-    mutating func deleteMemo(at index: Int) {
-        memos.remove(at: index)
+    func update(at id: UUID, to memo: Memo) {
+        let request = Note.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", id.uuidString)
+        dataController.update(request: request) { managedObject in
+            managedObject.setValue(id, forKey: "id")
+            managedObject.setValue(memo.title, forKey: "title")
+            managedObject.setValue(memo.body, forKey: "body")
+            managedObject.setValue(Date(), forKey: "lastModified")
+        }
+    }
+    
+    func delete(at id: UUID) {
+        let request = Note.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", id.uuidString)
+        guard let result = dataController.fetch(request: request).first else {
+            return
+        }
+        dataController.delete(object: result)
     }
     
 }

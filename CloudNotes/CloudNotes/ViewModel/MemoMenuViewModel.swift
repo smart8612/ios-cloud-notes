@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit.NSDataAsset
 
 final class MemoMenuViewModel {
     
@@ -31,7 +30,8 @@ final class MemoMenuViewModel {
     }
     
     func removeMemo(at index: Int) {
-        model.deleteMemo(at: index)
+        guard let id = memos[index].id else { return }
+        model.delete(at: id)
     }
     
 }
