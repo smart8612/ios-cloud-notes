@@ -15,6 +15,13 @@ final class MemoMenuViewModel {
     
     private var uiHandler: (() -> Void)?
     
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("yyyy MM dd")
+        formatter.locale = NSLocale.current
+        return formatter
+    }()
+    
     init(handler: (() -> Void)? = nil) {
         uiHandler = handler
     }
@@ -27,6 +34,15 @@ final class MemoMenuViewModel {
     
     func cellTitle(at index: Int) -> String {
         return memos[index].title
+    }
+    
+    func cellBody(at index: Int) -> String {
+        return memos[index].body
+    }
+    
+    func cellLastModified(at index: Int) -> String {
+        let date = memos[index].lastModified
+        return dateFormatter.string(from: date)
     }
     
     func removeMemo(at index: Int) {

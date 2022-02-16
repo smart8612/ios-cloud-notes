@@ -17,6 +17,8 @@
 		C17291B627B40B250092D8E7 /* MemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17291B527B40B250092D8E7 /* MemoModel.swift */; };
 		C17291BA27B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17291B927B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift */; };
 		C17291BC27B42F0A0092D8E7 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17291BB27B42F0A0092D8E7 /* Section.swift */; };
+		C1947E3227BD5A2300B0A7DE /* MemoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1947E3127BD5A2300B0A7DE /* MemoListTableViewCell.swift */; };
+		C1947E3427BD5A7A00B0A7DE /* TypeNameConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1947E3327BD5A7A00B0A7DE /* TypeNameConvertible.swift */; };
 		C1D482D727BC9CFE00911C54 /* CloudNotesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D482D627BC9CFE00911C54 /* CloudNotesDataController.swift */; };
 		C1D482DE27BCBA4300911C54 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10A9A9F27B19C4C00339A93 /* Memo.swift */; };
 		C7481C6E25BBCF3900B9CA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7481C6D25BBCF3900B9CA55 /* AppDelegate.swift */; };
@@ -62,6 +64,8 @@
 		C17291B927B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoMenuTableViewDiffableDataSource.swift; sourceTree = "<group>"; };
 		C17291BB27B42F0A0092D8E7 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		C185A38BC6C0D925316CFCF9 /* Pods_CloudNotes_CloudNotesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CloudNotes_CloudNotesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1947E3127BD5A2300B0A7DE /* MemoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewCell.swift; sourceTree = "<group>"; };
+		C1947E3327BD5A7A00B0A7DE /* TypeNameConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeNameConvertible.swift; sourceTree = "<group>"; };
 		C1D482D627BC9CFE00911C54 /* CloudNotesDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudNotesDataController.swift; sourceTree = "<group>"; };
 		C7481C6A25BBCF3900B9CA55 /* CloudNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7481C6D25BBCF3900B9CA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 				C7481C7125BBCF3900B9CA55 /* MemoDetailViewController.swift */,
 				C10A9AA427B1A36500339A93 /* MemoSelectedDelegate.swift */,
 				C17291B927B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift */,
+				C1947E3127BD5A2300B0A7DE /* MemoListTableViewCell.swift */,
+				C1947E3327BD5A7A00B0A7DE /* TypeNameConvertible.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -458,8 +464,10 @@
 				C7481C7025BBCF3900B9CA55 /* SceneDelegate.swift in Sources */,
 				C17291BA27B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift in Sources */,
 				C7481C7825BBCF3900B9CA55 /* CloudNotes.xcdatamodeld in Sources */,
+				C1947E3427BD5A7A00B0A7DE /* TypeNameConvertible.swift in Sources */,
 				C10A9AA527B1A36500339A93 /* MemoSelectedDelegate.swift in Sources */,
 				C17291B627B40B250092D8E7 /* MemoModel.swift in Sources */,
+				C1947E3227BD5A2300B0A7DE /* MemoListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +678,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLY2NY4CXP;
 				INFOPLIST_FILE = CloudNotesTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -692,6 +701,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLY2NY4CXP;
 				INFOPLIST_FILE = CloudNotesTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -713,6 +723,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLY2NY4CXP;
 				INFOPLIST_FILE = CloudNotesUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -733,6 +744,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MLY2NY4CXP;
 				INFOPLIST_FILE = CloudNotesUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
