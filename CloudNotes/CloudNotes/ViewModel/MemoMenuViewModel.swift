@@ -10,28 +10,13 @@ import UIKit.NSDataAsset
 
 final class MemoMenuViewModel {
     
-    private var model: MemoModel {
+    private var model = MemoModel() {
         didSet { uiHandler?() }
     }
     
     private var uiHandler: (() -> Void)?
     
     init(handler: (() -> Void)? = nil) {
-        let sampleAsset = NSDataAsset(name: "sample")
-
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .secondsSince1970
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-        guard let jsonData = sampleAsset?.data,
-              var decodedJSON = try? decoder.decode([Memo].self, from: jsonData) else {
-                  self.model = MemoModel(memo: [])
-                  return
-        }
-
-        decodedJSON.indices.forEach { decodedJSON[$0].id = UUID() }
-        model = MemoModel(memo: decodedJSON)
-        
         uiHandler = handler
     }
     

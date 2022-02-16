@@ -51,6 +51,20 @@ class CloudNotesDataController {
         self.handler = completionHandler
     }
     
+    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
+        let result = try? context.fetch(request)
+        return result ?? []
+    }
+    
+    func create(entity name: String, objectHandler: (NSManagedObject) -> Void) {
+        guard let entity = NSEntityDescription.entity(forEntityName: name, in: context) else {
+            return
+        }
+        let managedObject = NSManagedObject(entity: entity, insertInto: context)
+        objectHandler(managedObject)
+        try? context.save()
+    }
+    
     // MARK: - Core Data Saving support
     func saveContext () {
         if context.hasChanges {

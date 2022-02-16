@@ -18,6 +18,7 @@
 		C17291BA27B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17291B927B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift */; };
 		C17291BC27B42F0A0092D8E7 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17291BB27B42F0A0092D8E7 /* Section.swift */; };
 		C1D482D727BC9CFE00911C54 /* CloudNotesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D482D627BC9CFE00911C54 /* CloudNotesDataController.swift */; };
+		C1D482DE27BCBA4300911C54 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10A9A9F27B19C4C00339A93 /* Memo.swift */; };
 		C7481C6E25BBCF3900B9CA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7481C6D25BBCF3900B9CA55 /* AppDelegate.swift */; };
 		C7481C7025BBCF3900B9CA55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7481C6F25BBCF3900B9CA55 /* SceneDelegate.swift */; };
 		C7481C7225BBCF3900B9CA55 /* MemoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7481C7125BBCF3900B9CA55 /* MemoDetailViewController.swift */; };
@@ -467,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7481C8825BBCF3A00B9CA55 /* CloudNotesTests.swift in Sources */,
+				C1D482DE27BCBA4300911C54 /* Memo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

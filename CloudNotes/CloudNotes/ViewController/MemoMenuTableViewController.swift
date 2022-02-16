@@ -14,7 +14,8 @@ final class MemoMenuTableViewController: UITableViewController {
     var delegate: MemoSelectedDelegate?
     
     private lazy var dataSource = {
-        return MemoMenuTableViewDiffableDataSource(tableView: self.tableView, viewModel: self.viewModel) { (view, indexPath, item) in
+        return MemoMenuTableViewDiffableDataSource(
+            tableView: self.tableView, viewModel: self.viewModel) { (view, indexPath, item) in
             let cell = view.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             var content = cell.defaultContentConfiguration()
             content.text = item.title
@@ -48,7 +49,7 @@ final class MemoMenuTableViewController: UITableViewController {
 
 }
 
-// MARK: - Tablew view delegate
+// MARK: - Table view delegate
 extension MemoMenuTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
