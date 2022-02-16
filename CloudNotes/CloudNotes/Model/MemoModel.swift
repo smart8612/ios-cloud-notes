@@ -14,26 +14,56 @@ struct MemoModel {
         CloudNotesDataController.shared
     }
     
-    private(set) var memos: [Memo] = []
+    let fetchResultsController: NSFetchedResultsController<Note> = {
+        let request = Note.fetchRequest()
+        let dateTimeSort = NSSortDescriptor(key: "lastModified", ascending: true)
+        let context = CloudNotesDataController.shared.context
+        request.sortDescriptors = [dateTimeSort]
+        return NSFetchedResultsController(
+            fetchRequest: request,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil, cacheName: nil
+        )
+    }()
     
-    init() {
-        fetch()
+    private var notes: [Note] {
+        guard let notes = fetchResultsController.fetchedObjects else {
+            return []
+        }
+        return notes
     }
     
-    mutating func fetch() {
-        let request = Note.fetchRequest()
-        let result = dataController.fetch(request: request)
-        self.memos = result.map({ note in
-            Memo(id: note.id, title: note.title ?? "", body: note.body ?? "", lastModified: note.lastModified ?? Date())
-        })
+    var memos: [Memo] {
+        notes.map {
+            Memo(
+                id: $0.id,
+                title: $0.title ?? "",
+                body: $0.body ?? "",
+                lastModified: $0.lastModified ?? Date()
+            )
+        }
+    }
+    
+    func memo(at indexPath: IndexPath) -> Memo {
+        let note = fetchResultsController.object(at: indexPath)
+        return Memo(
+            id: note.id,
+            title: note.title ?? "",
+            body: note.body ?? "",
+            lastModified: note.lastModified ?? Date()
+        )
     }
     
     func create(memo: Memo) {
         dataController.create(entity: "Note") { managedObject in
-            managedObject.setValue(memo.id, forKey: "id")
-            managedObject.setValue(memo.title, forKey: "title")
-            managedObject.setValue(memo.body, forKey: "body")
-            managedObject.setValue(memo.lastModified, forKey: "lastModified")
+            [
+                "identifier": UUID(),
+                "title": memo.title,
+                "body": memo.body,
+                "lastModified": Date()
+            ].forEach { key, value in
+                managedObject.setValue(value, forKey: key)
+            }
         }
     }
     

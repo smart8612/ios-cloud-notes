@@ -6,14 +6,11 @@
 //
 
 import Foundation
+import CoreData
 
 final class MemoMenuViewModel {
     
-    private var model = MemoModel() {
-        didSet { uiHandler?() }
-    }
-    
-    private var uiHandler: (() -> Void)?
+    private var model = MemoModel()
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -22,8 +19,9 @@ final class MemoMenuViewModel {
         return formatter
     }()
     
-    init(handler: (() -> Void)? = nil) {
-        uiHandler = handler
+    init(delegate: NSFetchedResultsControllerDelegate) {
+        model.fetchResultsController.delegate = delegate
+        try? model.fetchResultsController.performFetch()
     }
     
     var title: String { return "메모" }
@@ -32,21 +30,21 @@ final class MemoMenuViewModel {
     
     var memos: [Memo] { return model.memos }
     
-    func cellTitle(at index: Int) -> String {
-        return memos[index].title
+    func cellTitle(at indexPath: IndexPath) -> String {
+        return model.memo(at: indexPath).title
     }
     
-    func cellBody(at index: Int) -> String {
-        return memos[index].body
+    func cellBody(at indexPath: IndexPath) -> String {
+        return model.memo(at: indexPath).body
     }
     
-    func cellLastModified(at index: Int) -> String {
-        let date = memos[index].lastModified
+    func cellLastModified(at indexPath: IndexPath) -> String {
+        let date = model.memo(at: indexPath).lastModified
         return dateFormatter.string(from: date)
     }
     
-    func removeMemo(at index: Int) {
-        guard let id = memos[index].id else { return }
+    func removeMemo(at indexPath: IndexPath) {
+        guard let id = model.memo(at: indexPath).id else { return }
         model.delete(at: id)
     }
     

@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 final class MemoMenuTableViewController: UITableViewController {
     
-    private(set) lazy var viewModel = MemoMenuViewModel(handler: self.updateUI)
+    private(set) lazy var viewModel = MemoMenuViewModel(delegate: self)
     
     var delegate: MemoSelectedDelegate?
     
@@ -23,9 +24,9 @@ final class MemoMenuTableViewController: UITableViewController {
                     let viewModel = self.viewModel
                     let index = indexPath.row
                     cell.setLabelText(
-                        title: viewModel.cellTitle(at: index),
-                        body: viewModel.cellBody(at: index),
-                        lastModified: viewModel.cellLastModified(at: index)
+                        title: viewModel.cellTitle(at: indexPath),
+                        body: viewModel.cellBody(at: indexPath),
+                        lastModified: viewModel.cellLastModified(at: indexPath)
                     )
                 }
                 
@@ -73,6 +74,14 @@ extension MemoMenuTableViewController {
     
 }
 
+extension MemoMenuTableViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        updateUI()
+    }
+    
+}
+
 extension UITableView {
     
     func register<Cell: UITableViewCell>(_: Cell.Type) where Cell: TypeNameConvertible {
@@ -80,4 +89,3 @@ extension UITableView {
     }
     
 }
-

@@ -24,7 +24,7 @@ class MemoMenuTableViewDiffableDataSource: UITableViewDiffableDataSource<Section
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            viewModel?.removeMemo(at: indexPath.row)
+            viewModel?.removeMemo(at: indexPath)
         }
     }
 

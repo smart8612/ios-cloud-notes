@@ -144,10 +144,8 @@
 			children = (
 				C110BDAE27B182A5002C2F26 /* MemoMenuTableViewController.swift */,
 				C7481C7125BBCF3900B9CA55 /* MemoDetailViewController.swift */,
-				C10A9AA427B1A36500339A93 /* MemoSelectedDelegate.swift */,
-				C17291B927B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift */,
-				C1947E3127BD5A2300B0A7DE /* MemoListTableViewCell.swift */,
-				C1947E3327BD5A7A00B0A7DE /* TypeNameConvertible.swift */,
+				C1947E3627BD5F1D00B0A7DE /* Delegate */,
+				C1947E3527BD5EFC00B0A7DE /* View */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -168,6 +166,24 @@
 				C17291B327B40ACC0092D8E7 /* MemoMenuViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C1947E3527BD5EFC00B0A7DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1947E3127BD5A2300B0A7DE /* MemoListTableViewCell.swift */,
+				C1947E3327BD5A7A00B0A7DE /* TypeNameConvertible.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C1947E3627BD5F1D00B0A7DE /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				C10A9AA427B1A36500339A93 /* MemoSelectedDelegate.swift */,
+				C17291B927B42E9D0092D8E7 /* MemoMenuTableViewDiffableDataSource.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 		C7481C6125BBCF3900B9CA55 = {
